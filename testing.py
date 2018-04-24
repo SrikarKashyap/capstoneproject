@@ -1,4 +1,8 @@
-data = 'Wavpath: telugu_70.wav<b hidden="hidden"><audio autoplay="autoplay" src="telugu_70.wav" controls="controls"></audio><b>'
-import re
-
-print(re.search('[a-z]+_\d+.wav',data).match)
+i = 0
+j = 0
+a = ["hello"]
+while i>=0:
+	print(a[i])
+	a.append(j)
+	i = i + 1
+	j = i + 100000000000000
