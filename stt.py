@@ -12,7 +12,7 @@ speech_to_text = SpeechToTextV1(
 
 
 def getoutput(fname):
-
+    print("Entered Speech to Text")
     with open(join(dirname(__file__), fname),
               'rb') as audio_file:
         recdata = speech_to_text.recognize(
