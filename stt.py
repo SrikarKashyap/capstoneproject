@@ -12,6 +12,20 @@ speech_to_text = SpeechToTextV1(
 
 
 def getoutput(fname):
+    """
+    Generate English Text from Speech using IBM Watson STT Engine
+
+    Parameters
+    ----------
+    fname: str
+        the individual file to process on
+
+    Returns
+    -------
+    text: str
+        the transcribed text from the audio clip in english
+
+    """
     print("Entered Speech to Text")
     with open(join(dirname(__file__), fname),
               'rb') as audio_file:
