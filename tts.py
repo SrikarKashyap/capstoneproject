@@ -41,4 +41,4 @@ def tts():
 
     print("Entered Text to Speech")
     # call(["./../flite/bin/flite", "-voice", "../flite/voices/cmu_indic_tel_ss.flitevox", "--setf", "duration_stretch=1.3","--setf int_f0_target_mean=145", "../flite/doc/input.txt", "data.wav"])
-    os.system("./../flite/bin/flite -voice ../flite/voices/cmu_indic_tel_sk.flitevox --setf duration_stretch=1.15 --setf int_f0_target_mean=145 ../flite/doc/input.txt output.aac")
+    os.system("./../flite/bin/flite -voice ../flite/voices/cmu_indic_tel_ss.flitevox --setf duration_stretch=1.15 --setf int_f0_target_mean=145 ../flite/doc/input.txt output.aac")

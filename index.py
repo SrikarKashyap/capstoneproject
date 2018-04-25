@@ -88,7 +88,7 @@ def mergevideoaudio(mutevid):
         Merges through OS system call
 
     """
-    os.system("""ffmpeg -i """+mutevid+""" -i output.aac -shortest -c:v copy -c:a aac -b:a 256k -strict -2 final.mp4""")
+    os.system("""ffmpeg -i """+mutevid+""" -i output.aac -shortest -c:v copy -c:a aac -b:a 256k -strict -2 output.mp4""")
 
 
 def process(file):
@@ -166,6 +166,8 @@ if __name__ == '__main__':
     # mute the video stream
     mutevid = mutevideo(filename)
     translator = Translator()
+    # cleanup of previous outputs to prevent conflicts
+    os.system("rm output.mp4")
     song = AudioSegment.from_file(audiofile, format="aac")
     fileparts = []
     i = 0
@@ -177,7 +179,7 @@ if __name__ == '__main__':
         slic.export(name, format="wav")
         i += 15000
     # parallel processing using 15 threads by ThreadPool library
-    pool = ThreadPool(15)
+    pool = ThreadPool(25)
     results = pool.map(process, fileparts)
     f.write(" ".join(results))
     f.close()
