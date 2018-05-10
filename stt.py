@@ -26,7 +26,7 @@ def getoutput(fname):
         the transcribed text from the audio clip in english
 
     """
-    print("Entered Speech to Text")
+    #print("Entered Speech to Text")
     with open(join(dirname(__file__), fname),
               'rb') as audio_file:
         recdata = speech_to_text.recognize(

@@ -24,8 +24,8 @@ def extractaudio(filename):
         the audio file name
 
     """
-    print("Entered Extract Audio")
-    os.system("""ffmpeg -i """+filename+""" -loglevel quiet -vn -acodec copy """+filename+""".aac""")
+    # print("Entered Extract Audio")
+    os.system("""ffmpeg -i """+filename+""" -nostats -loglevel 0 -vn -acodec copy """+filename+""".aac""")
     return str(filename+".aac")
 
 
@@ -44,9 +44,9 @@ def mutevideo(filename):
         the video file without audio track
 
     """
-    print("Entered Mute Video")
+    # print("Entered Mute Video")
     mutedfilename = filename[:len(filename)-4]+".muted"+filename[len(filename)-4:]
-    os.system("""ffmpeg -i """+filename+""" -loglevel quiet -codec copy -an """+mutedfilename)
+    os.system("""ffmpeg -i """+filename+""" -nostats -loglevel 0 -codec copy -an """+mutedfilename)
     return mutedfilename
 
 
@@ -69,11 +69,11 @@ def cleantext(engtext):
         better ways to clean and more text to refine
 
     """
-    print("Entered Clean Text")
+    # print("Entered Clean Text")
     return engtext.replace("%", "").replace("HESITATION", "")
 
 
-def mergevideoaudio(mutevid):
+def mergevideoaudio(filename, mutevid):
     """
     Merge the new audio track and muted video using ffmpeg
 
@@ -88,7 +88,7 @@ def mergevideoaudio(mutevid):
         Merges through OS system call
 
     """
-    os.system("""ffmpeg -i """+mutevid+""" -i output.aac -shortest -c:v copy -c:a aac -b:a 256k -strict -2 output.mp4""")
+    os.system("""ffmpeg -i """+mutevid+""" -nostats -loglevel 0 -i output.aac -shortest -c:v copy -c:a aac -b:a 256k -strict -2 """+filename+""".output.mp4""")
 
 
 def process(file):
@@ -108,9 +108,10 @@ def process(file):
         the utf8 telugu text for further TTS generation for each file.
 
     """
+    translator = Translator()
     data = stt.getoutput(file)
     data = cleantext(data)
-    print(data)
+    # print(data)
     text = translator.translate(data, src="en", dest="te").text
     return text
 
@@ -136,9 +137,7 @@ def cleanup(mutevid, audiofile):
     os.system("rm "+mutevid)
     os.system("rm output.aac")
     os.system("rm "+audiofile)
-
-
-if __name__ == '__main__':
+def main(filename):
     """
     main() function of the program.
 
@@ -157,18 +156,27 @@ if __name__ == '__main__':
         Better parallel processing and queue management. Simulatenous processing and playing preferred
 
     """
-    filename = sys.argv[1]
+    # filename = sys.argv[1]
     # os.system('youtube-dl -i --extract-audio
     # --audio-format mp3 --output "test.mp3" '+link)
+    if filename.split(".")[1] != "mp4":
+        return 1
     audiofile = extractaudio(filename)
     # for telugu text storage for conversion later. easier with files than lists
     f = open("/home/srikarkashyap/flite/doc/input.txt", "w")
     # mute the video stream
     mutevid = mutevideo(filename)
-    translator = Translator()
     # cleanup of previous outputs to prevent conflicts
-    os.system("rm output.mp4")
+    #try:
+        #os.system("rm output.mp4")
+        #os.system("rm *.wav")
+        #os.system("rm *.muted.*")
+        #os.system("rm *.aac")
+    #except:
+    #    pass
     song = AudioSegment.from_file(audiofile, format="aac")
+    if len(song) > 480000:
+        return 2
     fileparts = []
     i = 0
     # partition the audio file into 15 second segments for faster and easier processing
@@ -186,7 +194,15 @@ if __name__ == '__main__':
     # perform text to speech synthesis of telugu text
     tts.tts()
     # generate final output video by merging muted video and telugu audio
-    mergevideoaudio(mutevid)
+    mergevideoaudio(filename, mutevid)
     # cleanup tasks including deleting redundant files
     cleanup(mutevid, audiofile)
-    print(results)
+    # print(results)
+    return 0
+
+
+if __name__ == '__main__':
+
+    main()
+
+
