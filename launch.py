@@ -1,9 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Module documentation goes here
+   and here
+   and ...
+"""
 from tkinter import *
-import time
 import index
-from tkinter.ttk import Progressbar
 from tkinter import messagebox
-import ubiquitalk
+
 
 window = Tk()
 window.title("EngtoTel Video Translator!")
@@ -24,7 +29,7 @@ txt.grid(column=1, row=5)
 
 def clicked():
     """
-    Send request to the index function to perform the needy.
+    Send request to the index function to perform the needy and performs error handling
 
     Parameters
     ----------

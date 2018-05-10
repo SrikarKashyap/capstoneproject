@@ -1,4 +1,11 @@
-# coding: utf8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Module documentation goes here
+   and here
+   and ...
+"""
+
 from pydub import AudioSegment
 import stt
 import tts
@@ -202,7 +209,6 @@ def main(filename):
 
 
 if __name__ == '__main__':
-
     main()
 
 

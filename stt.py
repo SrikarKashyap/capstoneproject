@@ -1,4 +1,11 @@
-# coding: utf8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Module documentation goes here
+   and here
+   and ...
+"""
+
 from __future__ import print_function
 import json
 from os.path import join, dirname
