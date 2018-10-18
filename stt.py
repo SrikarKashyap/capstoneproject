@@ -14,7 +14,6 @@ from watson_developer_cloud import SpeechToTextV1
 speech_to_text = SpeechToTextV1(
     username='2e1634da-c1c3-441d-b31e-40341d48ebd9',
     password='2pNntsBzU0IS',
-    x_watson_learning_opt_out=False
 )
 
 
