@@ -7,3 +7,4 @@ Initial version was developed as part of UC Berkeley Open Innovation Hackathon, 
 - IBM Watson, Google Translate APIs for Speech-to-Text & translation.
 - [CMU Festival (flite)](https://github.com/festvox/flite) for Telugu Text-to-Speech.
 
+![apis](https://github.com/chaitanyakasaraneni/capstoneproject/blob/master/images/api.PNG "APIs used")
