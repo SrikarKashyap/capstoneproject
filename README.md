@@ -8,3 +8,10 @@ Initial version was developed as part of UC Berkeley Open Innovation Hackathon, 
 - [CMU Festival (flite)](https://github.com/festvox/flite) for Telugu Text-to-Speech.
 
 ![apis](https://github.com/chaitanyakasaraneni/capstoneproject/blob/master/images/api.PNG "APIs used")
+
+### Work-flow of the project
+The project ddevelopment involved three stages.
+ - Audio extraction from video
+ - Processing the threads parallelly
+ - Text-to-Speech and merging
+![stages](https://github.com/chaitanyakasaraneni/capstoneproject/blob/master/images/stage.PNG "Work flow")
