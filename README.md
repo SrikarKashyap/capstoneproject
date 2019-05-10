@@ -32,3 +32,4 @@ cd flite
 make
 make get_voices
 ```
+For the usage instructions head over to the [flite repo](https://github.com/festvox/flite) and refer the USAGE section
