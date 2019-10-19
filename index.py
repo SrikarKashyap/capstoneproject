@@ -170,7 +170,7 @@ def main(filename):
         return 1
     audiofile = extractaudio(filename)
     # for telugu text storage for conversion later. easier with files than lists
-    f = open("/home/srikarkashyap/flite/doc/input.txt", "w")
+    f = open("path_to_your_flite_clone/doc/input.txt", "w")
     # mute the video stream
     mutevid = mutevideo(filename)
     # cleanup of previous outputs to prevent conflicts
