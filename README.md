@@ -1,7 +1,8 @@
 # English to Telugu Video Translator
 ### About this project
 Initial version was developed as part of UC Berkeley Open Innovation Hackathon, India - 2017 (Winner project in Communications vertical) and later underwent various improvements as a part of major project during our undergrad. This application mainly focuses on translation of English videos into Telugu. 
-
+##### Published Paper: 
+- [Machine Translation of English Videos to Indian Regional Languages using Open Innovation](https://ieeexplore.ieee.org/document/8937988)
 ### Overview
 In spite of many languages being spoken in India, it is difficult for the people to understand foreign languages like English, Spanish, Italian, etc. The recognition and synthesis of speech are prominent emerging technologies in natural language processing and communication domains. This paper aims to leverage the open source applications of these technologies, machine translation, text-to-speech system (TTS), and speech-to-text system (STT) to convert available online resources to Indian languages. This application takes an English language video as an input and separates the audio
 from video. It then divides the audio file into several smaller
